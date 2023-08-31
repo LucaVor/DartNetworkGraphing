@@ -7,10 +7,12 @@ class Node extends StatefulWidget {
     super.key,
     required this.position,
     required this.text,
+    required this.color,
   });
 
   Point position; // position of node
   String text; // text within node
+  Color color; // color of node
 
   final double nodeDiameter = 60; // diameter of node
 
@@ -29,22 +31,27 @@ class _NodeState extends State<Node> {
           width: widget.nodeDiameter,
           height: widget.nodeDiameter,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 0, 218, 233),
+            color: widget.color,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: const Color.fromARGB(255, 194, 194, 194),
-                blurRadius: 15,
+                color: widget.color,
+                blurRadius: 10,
                 spreadRadius: 1,
               ),
             ],
             border: Border.all(
-              color: Color.fromARGB(255, 0, 0, 0),
+              color: Color.fromARGB(255, 57, 57, 57),
               width: 3,
             ),
           ),
           child: Center(
-            child: Text(widget.text),
+            child: Text(
+              widget.text,
+              style: TextStyle(
+                fontSize: 10,
+              ),
+            ),
           ),
         ),
       ),
@@ -56,8 +63,10 @@ class NodeData {
   NodeData({
     required this.position,
     required this.text,
+    required this.color,
   });
 
   Point position;
   String text;
+  Color color;
 }

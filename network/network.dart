@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:fitness/cytoscape/node.dart';
+import 'package:fitness/network/node.dart';
 import 'package:flutter/material.dart';
-import 'package:fitness/cytoscape/paint.dart';
+import 'package:fitness/network/paint.dart';
 
 // Network widget that displays a network
 class Network extends StatefulWidget {
@@ -79,6 +79,8 @@ class Network extends StatefulWidget {
         items[a].position += forces[a];
       }
     }
+
+    ApplyPerspective();
   }
 
   // Center nodes in the perspective
@@ -136,9 +138,15 @@ class NetworkRender extends State<Network> {
       width: 500,
       height: 500,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 241, 241, 241),
-        borderRadius: BorderRadius.circular(15),
-      ),
+          color: Color.fromARGB(255, 241, 241, 241),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              blurRadius: 20,
+              spreadRadius: 1,
+            ),
+          ]),
       child: Stack(
         children: <Widget>[
           CustomPaint(
@@ -161,6 +169,7 @@ class NetworkRender extends State<Network> {
       res.add(Node(
         position: item.position,
         text: item.text,
+        color: item.color,
       ));
     });
 

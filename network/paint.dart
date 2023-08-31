@@ -24,7 +24,7 @@ class CurvedPainter extends CustomPainter {
         Offset(offsets[edges[index][1]].x as double,
             offsets[edges[index][1]].y as double),
         Paint()
-          ..color = const Color.fromARGB(255, 48, 48, 48)
+          ..color = Color.fromARGB(255, 221, 221, 221)
           ..strokeWidth = 4,
       );
     });
